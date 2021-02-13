@@ -251,6 +251,13 @@ div#all_poke {
             width              : 80px;
             height             : 80px;
 
+            @media(max-width: 990px) {
+                width : 70px;
+                height: 70px;
+                right : -25px;
+                top   : -30px;
+            }
+
             img {
                 margin-left: 0px;
                 width      : 100%;
@@ -365,6 +372,14 @@ div#infoPoke {
     div.body-pokemon {
         width: 80vw;
 
+        @media(max-width: 990px) {
+            width: 100vw;
+
+            div.container {
+                padding: 0 5px;
+            }
+        }
+
 
         div.content-pokemon {
             background-color: #f1f1f1;
@@ -374,6 +389,11 @@ div#infoPoke {
             justify-content : center;
             align-items     : center;
             background-image: url(../img/bg-poke.png);
+
+            @media(max-width: 990px) {
+                height       : 95vh;
+                border-radius: 5px;
+            }
 
             @each $type,
             $color in $mainColorTypes {
@@ -421,7 +441,7 @@ div#infoPoke {
                     display        : flex;
                     justify-content: center;
                     padding        : 20px;
-
+                    flex-wrap: wrap;
 
                     div.name,
                     div.id {
@@ -537,12 +557,12 @@ div#infoPoke {
                     }
 
                     div.content {
-                        width : 250px;
-                        height: 250px;
+                        width : 300px;
+                        height: 300px;
 
                         @media(max-width: 770px) {
-                            width : 300px;
-                            height: 300px;
+                            width : 250px;
+                            height: 250px;
                         }
                     }
                 }

@@ -1,6 +1,13 @@
 body {
     background-color: #2a2a2a;
+    overflow        : auto;
 }
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+
 
 
 @font-face {
@@ -48,7 +55,7 @@ div.load {
 
 div.load.ativo {
     display            : block;
-    position           : absolute;
+    position           : fixed;
     width              : 100%;
     height             : 100%;
     top                : 0;
@@ -83,6 +90,11 @@ div#windowPoke.ativo {
         left    : 10px;
         cursor  : pointer;
 
+        @media(max-width: 990px) {
+            top: 20px;
+            left: 15px;
+        }
+
         i {
             color     : red;
             font-size : 35px;
@@ -96,13 +108,15 @@ div#windowPoke.ativo {
     }
 
     div.load-css {
-        position           : absolute;
-        width              : 100%;
-        height             : calc(100vh - 32px);
+        position           : fixed;
+        width              : 100vw;
+        height             : 100vh;
         background-image   : url(../img/load.gif);
+        background-color   : #dc211e;
         background-position: center;
-        background-size    : cover;
-        top                : 32px;
+        background-size    : auto;
+        background-repeat  : no-repeat;
+        top                : 0;
         left               : 0;
         cursor             : wait;
     }

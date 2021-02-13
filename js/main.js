@@ -2,7 +2,7 @@ var valores = [];
 
 
 // funções de inicialização da Pokedéx
-var getBaseInfo = { 
+var getBaseInfo = {
 
     // exibe informações detalhadas do pokemon a partir do click
     attBtnCard: (card) => {
@@ -192,22 +192,31 @@ var pokeBase = {
                     sendEvolution(evoChain);
 
                     //Slick
-                    if (evoChain.length > 3) {
-                        setTimeout(function () {
-                            $('#recebeEvolution').slick({
-                                dots: false,
-                                arrows: false,
-                                infinite: true,
-                                speed: 300,
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                                useTransform: true,
-                                autoplay: true,
-                                autoplaySpeed: 2000,
-                                focusOnSelect: false
-                            });
-                        }, 1000);
-                    }
+                    setTimeout(function () {
+                        $('#recebeEvolution').slick({
+                            dots: false,
+                            arrows: true,
+                            infinite: true,
+                            speed: 300,
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            useTransform: true,
+                            autoplay: false,
+                            autoplaySpeed: 2000,
+                            focusOnSelect: false,
+                            responsive: [
+                                {
+                                    breakpoint: 990,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        dots: false
+                                    }
+                                },
+                            ]
+                        });
+                    }, 1000);
 
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown, result) {
@@ -537,10 +546,9 @@ var pokeBase = {
 // fim
 
 
-// inicia a pokedex com os primeiros 20 pokemons
+//carrega os pokemons na rolagem da tela
 var offset = 0;
 $('#main').on('scroll', function (startS) {
-    console.log('vai')
     let div = $(this).get(0);
     if (div.scrollTop + div.clientHeight >= div.scrollHeight) {
         $('.load').addClass('ativo');
@@ -556,8 +564,7 @@ $('#main').on('scroll', function (startS) {
     }
 });
 
-
-
+// inicia a pokedex com os primeiros 20 pokemons
 $(document).ready(function (showFirst) {
     $('.load').addClass('ativo');
     $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
@@ -568,5 +575,14 @@ $(document).ready(function (showFirst) {
 
     setTimeout(function () {
         $('.load').removeClass('ativo');
+        $('body').removeClass('no-scroll');
     }, 2000);
 });
+
+$('.close-window').click(function () {
+    $('#windowPoke').removeClass('ativo');
+});
+
+
+
+
