@@ -190,34 +190,6 @@ var pokeBase = {
                     } while (evoData != undefined && evoData.hasOwnProperty('evolves_to'));
 
                     sendEvolution(evoChain);
-
-                    //Slick
-                    setTimeout(function () {
-                        $('#recebeEvolution').slick({
-                            dots: false,
-                            arrows: true,
-                            infinite: true,
-                            speed: 300,
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            useTransform: true,
-                            autoplay: false,
-                            autoplaySpeed: 2000,
-                            focusOnSelect: false,
-                            responsive: [
-                                {
-                                    breakpoint: 990,
-                                    settings: {
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1,
-                                        infinite: true,
-                                        dots: false
-                                    }
-                                },
-                            ]
-                        });
-                    }, 1000);
-
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown, result) {
                     console.log('Falha em: getSpecies [', XMLHttpRequest, textStatus, errorThrown, result, ']');
@@ -309,6 +281,7 @@ var pokeBase = {
 
     createWindow: (pokeInformation) => {
         jQuery('#windowPoke').addClass('ativo');
+        jQuery('#main').addClass('no-scroll');
         jQuery('#infoPoke').addClass('ativo');
         jQuery('#infoPoke').html('<div class="load-css"><div class="icon"></div></div>');
 
@@ -575,12 +548,13 @@ $(document).ready(function (showFirst) {
 
     setTimeout(function () {
         $('.load').removeClass('ativo');
-        $('body').removeClass('no-scroll');
+        $('#main').removeClass('no-scroll');
     }, 2000);
 });
 
 $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
+    $('#main').removeClass('no-scroll')
 });
 
 
