@@ -78,10 +78,6 @@ div#all_poke {
     flex-wrap: wrap;
     padding  : 30px 0;
 
-    .col-md-4.col-sm-4.col-lg-3.col-xl-3 {
-        padding: 0 15px;
-    }
-
     div.pokemons-card {
         display         : flex;
         flex-wrap       : wrap;
@@ -280,7 +276,12 @@ div#all_poke {
                 max-height: 100%;
                 position  : relative;
                 z-index   : 2;
+                width     : 220px;
                 transition: transform .3s cubic-bezier(0.2, -1.01, 0.46, 1.37);
+
+                @media(max-width: 990px) {
+                    width: 200px;
+                }
             }
 
             &:before {
