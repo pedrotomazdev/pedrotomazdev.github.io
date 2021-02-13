@@ -1,0 +1,736 @@
+$typeColors: ("grass": linear-gradient(to right, #009245, #FCEE21, #9bcc50, #D9E021),
+    "fire": linear-gradient(to left, #f5ce62, #e43603, #fa7199, #e85a19),
+    "water": linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed),
+    "bug": linear-gradient(to left, #729f3f, #d5b9f5, #54965d, #92d249),
+    "normal": linear-gradient(to right, #dedede, #adadad, #d2d2d2, #969696),
+    "steel": linear-gradient(to left, #2f4353, #63676b, #505050, #5f5f5f),
+    "poison": linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7),
+    "ground": linear-gradient(to left, #e97333, #ff9a63, #d64c00, #e65b0f),
+    "fighting": linear-gradient(to right, #de3a49, #ff7682, #ea5360, #e04452),
+    "rock": linear-gradient(to left, #bfa655, #ccb775, #dcd0a9, #f3cf5c),
+    "electric": linear-gradient(to right, #efd459, #ffd61c, #f5e7a8, #b99e21),
+    "ghost": linear-gradient(to left, #6253e1, #852D91, #4642ff, #9f26bf),
+    "psychic": linear-gradient(to right, #ed6ea0, #ec8c69, #ed6ea0, #ff3d8a),
+    "ice": linear-gradient(to left, #3FD0D4, #40e495, #30dd8a, #0ce2e8),
+    "dragon": linear-gradient(to right, #53a4cf, #f16e57, #f5c1b8, #f16e57),
+    "fairy": linear-gradient(to left, #b1386e, #dc9ab7, #e0cad4, #ab165a),
+    "dark": linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376),
+    "flying": linear-gradient(to left, #3dc7ef, #0382a5, #ebe5e3, #bdb9b8, ));
+
+
+
+$typeColor: ("grass": linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%),
+    "fire": linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%),
+    "water": linear-gradient(180deg, #4592c4 50%, #4592c4 50%),
+    "bug": linear-gradient(180deg, #729f3f 50%, #729f3f 50%),
+    "normal":linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%),
+    "steel": linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%),
+    "poison": linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%),
+    "ground": linear-gradient(180deg, #f7de3f 50%, #ab9842 50%),
+    "fighting": linear-gradient(180deg, #d56723 50%, #d56723 50%),
+    "rock": linear-gradient(180deg, #a38c21 50%, #a38c21 50%),
+    "electric": linear-gradient(180deg, #fffa07 50%, #fffa07 50%),
+    "ghost": linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%),
+    "psychic": linear-gradient(180deg, #f366b9 50%, #f366b9 50%),
+    "ice": linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%),
+    "dragon": linear-gradient(180deg, #53a4cf 50%, #f16e57 50%),
+    "fairy": linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%),
+    "dark": linear-gradient(180deg, #2a2a2a 50%, #2a2a2a 50%),
+    "flying": linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%));
+
+
+$mainColorTypes: ("grass": #9bcc50,
+    "fire": #fd7d24,
+    "water": #4592c4,
+    "bug": #729f3f,
+    "normal": #a4acaf,
+    "steel": #9eb7b8,
+    "poison": #b97fc9,
+    "ground": #f7de3f,
+    "fighting": #d56723,
+    "rock": #a38c21,
+    "electric": #fffa07,
+    "ghost": #7b62a3,
+    "psychic": #f366b9,
+    "ice": #51c4e7,
+    "dragon": #53a4cf,
+    "fairy": #fdb9e9,
+    "dark": #2a2a2a,
+    "flying": #3dc7ef);
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+div#all_poke {
+    display  : flex;
+    flex-wrap: wrap;
+    padding  : 30px 0;
+
+    .col-md-4.col-sm-4.col-lg-3.col-xl-3 {
+        padding: 0 15px;
+    }
+
+    div.pokemons-card {
+        display         : flex;
+        flex-wrap       : wrap;
+        background-color: #f1f1f1;
+        margin-bottom   : 50px;
+        position        : relative;
+        cursor          : pointer;
+
+        &:hover {
+
+            @each $type,
+            $color in $mainColorTypes {
+                &.#{$type} {
+                    box-shadow: 0px -1px 2px 4px $color;
+                    filter    : drop-shadow(0px -2px 1px $color)
+                }
+            }
+
+            @each $type,
+            $color in $typeColor {
+                &.#{$type} {
+                    div.body-card {
+                        background: $color;
+                    }
+                }
+            }
+
+
+
+            div.poke-img {
+
+                @each $type,
+                $color in $typeColors {
+                    &.#{$type} {
+                        background-image   : $color;
+                        background-position: 100% 0;
+                        transition         : all .4s ease-in-out;
+                    }
+                }
+
+                &:after {
+                    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif);
+                    opacity         : .1;
+                }
+
+                &:before {
+                    opacity  : .4;
+                    animation: gradient 5s ease infinite;
+
+                }
+
+                img {
+                    transform: scale(1.2);
+                    filter   : drop-shadow(1px 1px 2px #000);
+                }
+            }
+        }
+
+        div.poke-type {
+            position: absolute;
+            z-index : 2;
+            display : flex;
+            left    : 5px;
+            top     : 5px;
+
+            i.energy {
+                height           : 28px;
+                width            : 28px;
+                display          : block;
+                background-size  : 165px;
+                filter           : drop-shadow(1px 1px 1px black);
+                background-image : url(../img/types/energy-types3.png);
+                background-repeat: no-repeat;
+
+                &.icon-none {
+                    display: none;
+                }
+
+                &.icon-bug {
+                    background-position: 0px 1px;
+                }
+
+                &.icon-grass {
+                    background-position: -28px 1px;
+                }
+
+                &.icon-poison {
+                    background-position: -140px -55px;
+                }
+
+                &.icon-electric {
+                    background-position: 0px -55px;
+                }
+
+                &.icon-flying {
+                    background-position: -112px -27px;
+                }
+
+                &.icon-ground {
+                    background-position: -28px -27px;
+                }
+
+                &.icon-steel {
+                    background-position: -56px -27px;
+                }
+
+                &.icon-rock {
+                    background-position: -28px -55px;
+                }
+
+                &.icon-dark {
+                    background-position: -56px -55px;
+                }
+
+                &.icon-fairy {
+                    background-position: -56px 1px;
+                }
+
+                &.icon-fire {
+                    background-position: -84px -27px;
+                }
+
+                &.icon-psychic {
+                    background-position: -140px 1px;
+                }
+
+                &.icon-metal {
+                    background-position: -75px 0px;
+                }
+
+                &.icon-ice {
+                    background-position: -140px -27px;
+                }
+
+                &.icon-water {
+                    background-position: -84px -55px;
+                }
+
+                &.icon-fighting {
+                    background-position: -112px -55px;
+                }
+
+                &.icon-normal {
+                    background-position: -84px 1px;
+                }
+
+                &.icon-dragon {
+                    background-position: -112px 1px;
+                }
+
+                &.icon-ghost {
+                    background-position: 0 -27px;
+                }
+
+            }
+        }
+
+        div.poke-icon {
+            position           : absolute;
+            z-index            : 3;
+            top                : -35px;
+            right              : -35px;
+            background-image   : url(../img/Poke_Ball_icon.png);
+            background-position: center center;
+            background-size    : 50%;
+            background-repeat  : no-repeat;
+            width              : 80px;
+            height             : 80px;
+
+            img {
+                margin-left: 0px;
+                width      : 100%;
+                height     : auto;
+                margin-top : -10px;
+                ;
+            }
+        }
+
+        div.poke-img {
+            height         : 220px;
+            width          : 100%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            position       : relative;
+
+            img {
+                max-width : 100%;
+                max-height: 100%;
+                position  : relative;
+                z-index   : 2;
+                transition: transform .3s cubic-bezier(0.2, -1.01, 0.46, 1.37);
+            }
+
+            &:before {
+                content        : '';
+                z-index        : 0;
+                position       : absolute;
+                top            : 0;
+                left           : 0;
+                width          : 100%;
+                height         : 100%;
+                background-size: 400% 400%;
+                opacity        : 0;
+                transition     : opacity .3s;
+            }
+
+            &:after {
+                content         : '';
+                z-index         : 1;
+                position        : absolute;
+                top             : 0;
+                left            : 0;
+                width           : 100%;
+                height          : 100%;
+                background-image: url(../img/bg-card.png);
+                opacity         : 0.0;
+            }
+
+            @each $type,
+            $color in $typeColors {
+                &.#{$type} {
+                    background-size: 300% 100%;
+                }
+            }
+        }
+
+        div.body-card {
+            display         : flex;
+            flex-wrap       : wrap;
+            align-items     : center;
+            width           : 100%;
+            justify-content : space-between;
+            padding         : 15px;
+            padding-top     : 5px;
+            background-color: #fff;
+
+            div.poke-id {
+                width: 50%;
+
+                h3 {
+                    text-align : left;
+                    color      : #fff;
+                    font-weight: bold;
+                    font-size  : 15px;
+                    text-shadow: 1px 1px 3px #000;
+                }
+            }
+
+            div.poke-name {
+                position  : relative;
+                z-index   : 1;
+                width     : 100%;
+                margin-top: 10px;
+
+                h2 {
+                    text-align    : left;
+                    text-transform: capitalize;
+                    font-weight   : bold;
+                    color         : #000;
+                    font-size     : 20px;
+                }
+            }
+        }
+
+
+
+    }
+
+}
+
+div#infoPoke {
+    background-color: #000;
+    height          : 100vh;
+    overflow        : auto;
+    background-image: url(../img/bg-poke.png);
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+
+    div.body-pokemon {
+        width: 80vw;
+
+
+        div.content-pokemon {
+            background-color: #f1f1f1;
+            border-radius   : 10px;
+            height          : 80vh;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            background-image: url(../img/bg-poke.png);
+
+            @each $type,
+            $color in $mainColorTypes {
+                &.#{$type} {
+                    border: 5px solid $color;
+                }
+            }
+
+
+            div.body-content {
+                display       : flex;
+                flex-wrap     : wrap;
+                overflow      : auto;
+                max-height    : calc(100% - 7.5px);
+                max-width     : calc(100% - 7.5px);
+                padding-bottom: 30px;
+
+                @each $type,
+                $color in $mainColorTypes {
+                    &.#{$type} {
+                        &::-webkit-scrollbar-track {
+                            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+                            border-radius     : 10px;
+                            background-color  : #CCCCCC;
+                        }
+
+                        &::-webkit-scrollbar {
+                            width           : 12px;
+                            background-color: #F5F5F5;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            border-radius   : 10px;
+                            background-color: $color;
+                            background-image: -webkit-linear-gradient(90deg,
+                                    transparent,
+                                    rgba(0, 0, 0, 0.4) 50%,
+                                    transparent,
+                                    transparent)
+                        }
+                    }
+                }
+
+                div.poke-id {
+                    display        : flex;
+                    justify-content: center;
+                    padding        : 20px;
+
+
+                    div.name,
+                    div.id {
+                        font-size     : 40px;
+                        font-weight   : bold;
+                        text-transform: capitalize;
+                    }
+
+                    div.name {
+                        margin-right: 5px;
+                        color       : #000;
+                    }
+
+                    div.id {
+                        margin-left: 5px;
+                        color      : #505050;
+                    }
+                }
+
+                div.pokemon-img {
+                    background-color: #495057;
+                    border-radius   : 10px;
+                    background-image: url(../img/bg-poke.png);
+                    display         : flex;
+                    justify-content : center;
+                    align-items     : center;
+                    filter          : drop-shadow(1px 1px 1px black);
+
+                    @media(max-width: 770px) {
+                        margin-bottom: 30px;
+                    }
+
+                    img {
+                        max-width : 100%;
+                        max-height: 100%;
+                        filter    : drop-shadow(1px 1px 1px black);
+                    }
+                }
+
+                div.pokesprites {
+                    display: flex;
+                    width  : 100%;
+
+                    div.item {
+                        padding        : 0 6px;
+                        width          : 25%;
+                        display        : flex !important;
+                        justify-content: center;
+                        align-items    : center;
+
+                        img {
+                            max-width: 100%;
+                            filter   : drop-shadow(1px 1px 1px black);
+                        }
+                    }
+                }
+
+                div.pokemon-description {
+                    font-size    : 18px;
+                    color        : #000;
+                    margin-bottom: 15px;
+                    width        : 100%;
+
+                }
+
+                div.types {
+                    display       : flex;
+                    flex-wrap     : wrap;
+                    text-transform: capitalize;
+
+                    div.title {
+                        width        : 100%;
+                        font-weight  : bold;
+                        font-size    : 20px;
+                        margin-bottom: 10px;
+                        color        : #000;
+                    }
+
+                    div.type {
+                        padding      : 5px;
+                        font-size    : 16px;
+                        font-weight  : bold;
+                        color        : #fff;
+                        margin       : 10px;
+                        border-radius: 5px;
+                        width        : 100px;
+                        text-align   : center;
+                        margin       : 0 5px;
+                        filter       : drop-shadow(1px 1px 1px black);
+
+                        &.none {
+                            display: none;
+                        }
+
+                        @each $type,
+                        $color in $typeColor {
+                            &.#{$type} {
+                                background-image: $color;
+                            }
+                        }
+                    }
+                }
+
+                div.poke-chart {
+                    margin-top     : 20px;
+                    width          : 100%;
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+
+                    @media(max-width: 770px) {
+                        margin-bottom: 20px;
+                    }
+
+                    div.content {
+                        width : 250px;
+                        height: 250px;
+
+                        @media(max-width: 770px) {
+                            width : 300px;
+                            height: 300px;
+                        }
+                    }
+                }
+
+                div.content-evolution {
+                    margin-top   : 20px;
+                    background   : #495057 url(../img/bg-poke.png);
+                    border-radius: 5px;
+                    position     : relative;
+                    padding      : 15px;
+                    clip-path    : polygon(100% 0, 100% 100%, 5% 100%, 0 90%, 0 0);
+
+                    &:before {
+                        content            : ' ';
+                        height             : 2em;
+                        position           : absolute;
+                        width              : 2em;
+                        z-index            : 3;
+                        left               : -1px;
+                        bottom             : -1px;
+                        transform          : rotate(-90deg);
+                        backface-visibility: hidden;
+                    }
+
+                    div.title {
+                        h3 {
+                            font-weight: bold;
+                            color      : #fff;
+                            text-align : center;
+                        }
+                    }
+
+                    div#recebeEvolution {
+                        display        : flex;
+                        flex-wrap      : wrap;
+                        justify-content: center;
+                        align-items    : center;
+                        margin         : 20px 0;
+
+                        div.item {
+                            width  : 33.33%;
+                            padding: 0 15px;
+
+                            div.poke-evolv-img {
+                                display         : flex;
+                                justify-content : center;
+                                align-items     : center;
+                                background-image: url(../img/bg-poke.png);
+                                background-color: #f1f1f1;
+                                border-radius   : 50%;
+                                box-shadow      : 1px 1px 2px #000;
+                                position        : relative;
+                                cursor          : pointer;
+
+                                &:before {
+                                    content        : '';
+                                    z-index        : 0;
+                                    position       : absolute;
+                                    top            : 0;
+                                    left           : 0;
+                                    width          : 100%;
+                                    height         : 100%;
+                                    background-size: 400% 400%;
+                                    opacity        : 0;
+                                    transition     : opacity .3s;
+                                }
+
+                                &:after {
+                                    content         : '';
+                                    z-index         : 1;
+                                    position        : absolute;
+                                    top             : 0;
+                                    left            : 0;
+                                    width           : 100%;
+                                    height          : 100%;
+                                    background-image: url(../img/bg-card.png);
+                                    opacity         : 0.0;
+                                    border-radius   : 50%;
+                                }
+
+                                @each $type,
+                                $color in $typeColors {
+                                    &.#{$type} {
+                                        background-size: 300% 100%;
+                                    }
+                                }
+
+                                @each $type,
+                                $color in $mainColorTypes {
+                                    &.#{$type} {
+                                        border: 5px solid $color;
+                                    }
+                                }
+
+
+                                img {
+                                    max-width : 100%;
+                                    max-height: 100%;
+                                    filter    : drop-shadow(1px 1px 2px black);
+                                    transition: transform .3s cubic-bezier(0.2, -1.01, 0.46, 1.37);
+                                    position  : relative;
+                                    z-index   : 2;
+                                }
+
+                                &:hover {
+
+                                    @each $type,
+                                    $color in $typeColors {
+                                        &.#{$type} {
+                                            background-image   : $color;
+                                            background-position: 100% 0;
+                                            transition         : all .4s ease-in-out;
+                                        }
+                                    }
+
+                                    &:after {
+                                        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif);
+                                        opacity         : .1;
+                                    }
+
+                                    &:before {
+                                        opacity  : .4;
+                                        animation: gradient 5s ease infinite;
+
+                                    }
+
+                                    img {
+                                        transform: scale(1.2);
+                                        filter   : drop-shadow(1px 1px 2px #000);
+                                    }
+                                }
+                            }
+
+                            div.types {
+                                display        : flex;
+                                flex-wrap      : wrap;
+                                text-transform : capitalize;
+                                padding        : 10px 0;
+                                justify-content: center;
+
+                                div.title {
+                                    width        : 100%;
+                                    font-weight  : bold;
+                                    font-size    : 20px;
+                                    margin-bottom: 10px;
+                                    color        : #000;
+                                }
+
+                                div.type {
+                                    padding      : 5px;
+                                    font-size    : 16px;
+                                    font-weight  : bold;
+                                    color        : #fff;
+                                    margin       : 10px;
+                                    border-radius: 5px;
+                                    width        : calc(50% - 10px);
+                                    text-align   : center;
+                                    margin       : 0 5px;
+                                    filter       : drop-shadow(1px 1px 1px black);
+
+                                    &.none {
+                                        display: none;
+                                    }
+
+                                    @each $type,
+                                    $color in $typeColor {
+                                        &.#{$type} {
+                                            background-image: $color;
+                                        }
+                                    }
+                                }
+                            }
+
+                            div.poke-name {
+                                text-align: center;
+
+                                span {
+                                    color         : #fff;
+                                    font-weight   : 600;
+                                    font-size     : 18px;
+                                    text-transform: capitalize;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
