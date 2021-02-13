@@ -96,7 +96,7 @@ var getBaseInfo = {
         templateInit = templateInit.replace(/{pokeSprite}/g, 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + id + '.png');
 
         var divCards = document.createElement('div');
-        divCards.setAttribute('class', 'col-md-4 col-sm-4 col-lg-3 col-xl-3');
+        divCards.setAttribute('class', 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 ');
         divCards.setAttribute('style', 'order:' + base.order);
 
         divCards.innerHTML = templateInit;
@@ -296,7 +296,8 @@ var pokeBase = {
             + "<div class='id'> N°{pokeId}</div>"
             + "</div>"
             + "</div>"
-            + "<div class='col-md-7 col-xs-12'>"
+            + "<div class='col-md-7 col-xs-12 col-lg-6'>"
+            + "<div class='content-sprites'>"
             + "<div class='pokemon-img'>"
             + "<div class='item'>"
             + "<img src={pokeSprite} class='primaria' alt='{pokeName}'>"
@@ -327,7 +328,8 @@ var pokeBase = {
             )
             + "</div>"
             + "</div>"
-            + "<div class='col-md-5 col-xs-12'>"
+            + "</div>"
+            + "<div class='col-md-5 col-xs-12 col-lg-6'>"
             + "<div class='pokemon-description' id='recebeDescricao'>"
             + "</div>"
             + "<div class='types'>"
@@ -359,7 +361,7 @@ var pokeBase = {
             + "</div>"
             + "</div>"
             + "</div>"
-            ;
+        ;
 
         var id = pokeInformation.id;
         if (id < 10) {
