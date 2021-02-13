@@ -550,6 +550,7 @@ $(document).ready(function (showFirst) {
 
     setTimeout(function () {
         $('.load').removeClass('ativo');
+        $('#preload').addClass('no-show')
         $('#main').removeClass('no-scroll');
     }, 2000);
 });

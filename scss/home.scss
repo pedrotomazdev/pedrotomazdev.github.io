@@ -78,6 +78,16 @@ div#all_poke {
     flex-wrap: wrap;
     padding  : 30px 0;
 
+    div#preload {
+        width    : 100%;
+        display  : flex;
+        flex-wrap: wrap;
+    }
+
+    div#preload.no-show {
+        display: none;
+    }
+
     div.pokemons-card {
         display         : flex;
         flex-wrap       : wrap;
@@ -383,12 +393,12 @@ div#infoPoke {
 
 
         div.content-pokemon {
-            background-color: #f1f1f1;
-            border-radius   : 10px;
-            height          : 90vh;
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
+            background-color   : #f1f1f1;
+            border-radius      : 10px;
+            height             : 90vh;
+            display            : flex;
+            justify-content    : center;
+            align-items        : center;
             // background-image: url(../img/bg-poke.png);
 
             @media(max-width: 990px) {
