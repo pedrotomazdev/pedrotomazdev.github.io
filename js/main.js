@@ -25,7 +25,6 @@ var getBaseInfo = {
             },
             error: function (XMLHttpRequest, textStatus, errorThrown, result) {
                 console.log('Falha em: catchPoke [', XMLHttpRequest, textStatus, errorThrown, result, ']');
-                console.log('teste falha')
             }
         });
     },
@@ -264,7 +263,6 @@ var pokeBase = {
             + "</div>"
             ;
 
-        console.log('nenza', dataPoke)
 
         templateEvolution = templateEvolution.replace(/{pokeId}/g, dataPoke.id);
         templateEvolution = templateEvolution.replace(/{pokeType}/g, dataPoke.types[0].type.name);
@@ -455,9 +453,7 @@ var pokeBase = {
                     }
                 }
             }
-
-            console.log(pokeInformation)
-
+            
             var ctx = document.getElementById('myChart').getContext('2d');
             var pokeChart = new Chart(ctx, {
                 type: 'radar',
