@@ -1,6 +1,11 @@
 body {
     background-color: #2a2a2a;
     overflow        : hidden;
+    padding-top     : 110px;
+
+    @media(max-width: 990px) {
+        padding-top: 175px;
+    }
 }
 
 section#main.no-scroll {
@@ -12,8 +17,8 @@ section#main {
     height  : 100vh;
 
     &::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
-        background-color  : #CCCCCC;
+        box-shadow      : inset 0 0 6px rgba(0, 0, 0, 0.9);
+        background-color: #CCCCCC;
     }
 
     &::-webkit-scrollbar {
@@ -26,7 +31,7 @@ section#main {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: red;
+        background-color: #19d3da;
         background-image: -webkit-linear-gradient(90deg,
                 transparent,
                 rgba(0, 0, 0, 0.4) 50%,

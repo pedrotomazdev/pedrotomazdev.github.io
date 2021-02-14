@@ -2,17 +2,6 @@
 <html lang="en">
 
 <head>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-B2LZNSXYV0');
-    </script>
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pokedex from fan to fan">
@@ -30,16 +19,9 @@
     <noscript>
         <link rel="stylesheet" href="css/main.css">
     </noscript>
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
 </head>
 
 <body class="no-scroll" id="firstElement">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJS3D5V" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <div class="load">
         <video loop autoplay muted>
@@ -50,10 +32,30 @@
     <div id="overlay">
     </div>
 
-    <div id="floatFlollow">
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_inline_follow_toolbox"></div>
-    </div>
+    <header>
+        <div class="container">
+            <div class="content-header">
+                <div class="col-md-6 col-sm-12">
+                    <div class="campo-busca">
+                        <p>Number or Name</p>
+                        <label for="searchKey">
+                            <input type="text" id="searchKey">
+                            <button id="startSearch">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div id="floatFlollow">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_inline_follow_toolbox"></div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </header>
 
     <section id="main">
         <div class="container">

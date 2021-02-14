@@ -571,11 +571,7 @@ $(document).ready(function (showFirst) {
         var scriptSlick = document.createElement('script');
         scriptSlick.src = 'js/slick/slick.min.js';
         document.body.appendChild(scriptSlick);
-
-        var scriptTagManager = document.createElement('script');
-        scriptTagManager.src = 'https://www.googletagmanager.com/gtag/js?id=G-B2LZNSXYV0';
-        document.head.appendChild(scriptTagManager);
-
+        
         var linkCssFont1 = document.createElement('link');
         linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
         linkCssFont1.media = "all";
@@ -583,14 +579,12 @@ $(document).ready(function (showFirst) {
         linkCssFont1.id = "font-awesome-5-kit-css1"
         document.head.appendChild(linkCssFont1);
 
-
         var linkCssFont2 = document.createElement('link');
         linkCssFont2.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css';
         linkCssFont2.media = "all";
         linkCssFont2.rel = "stylesheet";
         linkCssFont2.id = "font-awesome-5-kit-css2"
         document.head.appendChild(linkCssFont2);
-
 
         var linkCssFont3 = document.createElement('link');
         linkCssFont3.href = 'https://kit-free.fontawesome.com/releases/latest/css/free.min.css';
