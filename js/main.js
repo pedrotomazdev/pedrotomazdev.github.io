@@ -361,7 +361,7 @@ var pokeBase = {
             + "</div>"
             + "</div>"
             + "</div>"
-        ;
+            ;
 
         var id = pokeInformation.id;
         if (id < 10) {
@@ -559,6 +559,8 @@ $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
     $('#main').removeClass('no-scroll')
 });
+
+
 
 
 
