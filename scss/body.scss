@@ -43,9 +43,9 @@ section#main {
 }
 
 @font-face {
-    font-family: koho-bold;
-    src        : url(fonts/KoHo-Bold.ttf);
-
+    font-family : koho-bold;
+    src         : url(fonts/KoHo-Bold.ttf);
+    font-display: swap;
 }
 
 * {

@@ -550,10 +550,28 @@ $(document).ready(function (showFirst) {
                 offset += 20;
                 getBaseInfo.tratamentoPrimal(resultadoPrimario);
             });
-            
+
         $('.load').removeClass('ativo');
         $('#preload').addClass('no-show')
         $('#main').removeClass('no-scroll');
+
+        var scriptAddThis = document.createElement('script');
+        scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
+        document.body.appendChild(scriptAddThis);
+
+        var scriptChart = document.createElement('script');
+        scriptChart.src = 'js/chartjs/Chart.min.js';
+        document.body.appendChild(scriptChart);
+
+        var scriptChartBundle = document.createElement('script');
+        scriptChartBundle.src = 'js/chartjs/Chart.bundle.min.js';
+        document.body.appendChild(scriptChartBundle);
+
+        var scriptSlick = document.createElement('script');
+        scriptSlick.src = 'js/slick/slick.min.js';
+        document.body.appendChild(scriptSlick);
+
+
     }, 2000);
 });
 
@@ -561,6 +579,9 @@ $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
     $('#main').removeClass('no-scroll')
 });
+
+
+
 
 
 
