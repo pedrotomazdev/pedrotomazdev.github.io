@@ -572,6 +572,10 @@ $(document).ready(function (showFirst) {
         scriptSlick.src = 'js/slick/slick.min.js';
         document.body.appendChild(scriptSlick);
 
+        var scriptTagManager = document.createElement('script');
+        scriptTagManager.src = 'https://www.googletagmanager.com/gtag/js?id=G-B2LZNSXYV0';
+        document.head.appendChild(scriptTagManager);
+
         var linkCssFont1 = document.createElement('link');
         linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
         linkCssFont1.media = "all";
