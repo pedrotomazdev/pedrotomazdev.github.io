@@ -542,13 +542,15 @@ $('#main').on('scroll', function (startS) {
 // inicia a pokedex com os primeiros 20 pokemons
 $(document).ready(function (showFirst) {
     $('.load').addClass('ativo');
-    $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-        .done(function (resultadoPrimario) {
-            offset += 20;
-            getBaseInfo.tratamentoPrimal(resultadoPrimario);
-        });
+
 
     setTimeout(function () {
+        $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+            .done(function (resultadoPrimario) {
+                offset += 20;
+                getBaseInfo.tratamentoPrimal(resultadoPrimario);
+            });
+            
         $('.load').removeClass('ativo');
         $('#preload').addClass('no-show')
         $('#main').removeClass('no-scroll');
