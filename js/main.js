@@ -554,6 +554,7 @@ $(document).ready(function (showFirst) {
         $('.load').removeClass('ativo');
         $('#preload').addClass('no-show')
         $('#main').removeClass('no-scroll');
+        
 
         var scriptAddThis = document.createElement('script');
         scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
@@ -576,7 +577,7 @@ $(document).ready(function (showFirst) {
         linkCssFont1.media = "all";
         linkCssFont1.rel = "stylesheet";
         linkCssFont1.id = "font-awesome-5-kit-css1"
-        document.heade.appendChild(linkCssFont1);
+        document.head.appendChild(linkCssFont1);
 
 
         var linkCssFont2 = document.createElement('link');
@@ -584,7 +585,7 @@ $(document).ready(function (showFirst) {
         linkCssFont2.media = "all";
         linkCssFont2.rel = "stylesheet";
         linkCssFont2.id = "font-awesome-5-kit-css2"
-        document.heade.appendChild(linkCssFont2);
+        document.head.appendChild(linkCssFont2);
 
 
         var linkCssFont3 = document.createElement('link');
@@ -592,12 +593,12 @@ $(document).ready(function (showFirst) {
         linkCssFont3.media = "all";
         linkCssFont3.rel = "stylesheet";
         linkCssFont3.id = "font-awesome-5-kit-css3"
-        document.heade.appendChild(linkCssFont3);
+        document.head.appendChild(linkCssFont3);
 
         var linkCssChart = document.createElement('link');
         linkCssChart.href = 'css/Chart.min.css';
         linkCssChart.rel = "stylesheet";
-        document.heade.appendChild(linkCssChart);
+        document.head.appendChild(linkCssChart);
     }, 2000);
 });
 
