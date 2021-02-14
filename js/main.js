@@ -571,7 +571,33 @@ $(document).ready(function (showFirst) {
         scriptSlick.src = 'js/slick/slick.min.js';
         document.body.appendChild(scriptSlick);
 
+        var linkCssFont1 = document.createElement('link');
+        linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
+        linkCssFont1.media = "all";
+        linkCssFont1.rel = "stylesheet";
+        linkCssFont1.id = "font-awesome-5-kit-css1"
+        document.heade.appendChild(linkCssFont1);
 
+
+        var linkCssFont2 = document.createElement('link');
+        linkCssFont2.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css';
+        linkCssFont2.media = "all";
+        linkCssFont2.rel = "stylesheet";
+        linkCssFont2.id = "font-awesome-5-kit-css2"
+        document.heade.appendChild(linkCssFont2);
+
+
+        var linkCssFont3 = document.createElement('link');
+        linkCssFont3.href = 'https://kit-free.fontawesome.com/releases/latest/css/free.min.css';
+        linkCssFont3.media = "all";
+        linkCssFont3.rel = "stylesheet";
+        linkCssFont3.id = "font-awesome-5-kit-css3"
+        document.heade.appendChild(linkCssFont3);
+
+        var linkCssChart = document.createElement('link');
+        linkCssChart.href = 'css/Chart.min.css';
+        linkCssChart.rel = "stylesheet";
+        document.heade.appendChild(linkCssChart);
     }, 2000);
 });
 
