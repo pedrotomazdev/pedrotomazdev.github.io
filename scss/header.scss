@@ -23,6 +23,7 @@ header {
             label {
                 display    : flex;
                 align-items: center;
+                margin     : 5px 0;
 
                 input {
                     border          : none;
@@ -44,6 +45,10 @@ header {
                     height          : 40px;
                     margin-left     : 10px;
                 }
+            }
+
+            small {
+                color: #fff;
             }
         }
 
@@ -71,6 +76,11 @@ header {
                         display        : flex;
                         justify-content: center;
                         align-items    : center;
+                        transition     : all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+                        &:hover {
+                            filter: drop-shadow(2px 2px 5px #000);
+                        }
                     }
 
                     div.atclear {

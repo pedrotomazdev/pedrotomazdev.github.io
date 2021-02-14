@@ -11,6 +11,24 @@ var getBaseInfo = {
     },
     // Fim
 
+    getSearchPoke: (inputValueSearch) => {
+        var urlSearch = 'https://pokeapi.co/api/v2/pokemon/' + inputValueSearch;
+        $.ajax({
+            url: urlSearch,
+            type: 'GET',
+            dataType: 'json',
+            data: valores,
+            success: function (pokeInformation) {
+                pokeBase.createWindow(pokeInformation)
+                $('.load').removeClass('ativo');
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown, result) {
+                console.log('Falha em: catchPoke [', XMLHttpRequest, textStatus, errorThrown, result, ']');
+                console.log('teste falha')
+            }
+        });
+    },
 
     tratamentoPrimal: (resultadoPrimario) => {
         for (i = 0; i < resultadoPrimario.results.length; i++) {
@@ -554,7 +572,7 @@ $(document).ready(function (showFirst) {
         $('.load').removeClass('ativo');
         $('#preload').addClass('no-show')
         $('#main').removeClass('no-scroll');
-        
+
 
         var scriptAddThis = document.createElement('script');
         scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
@@ -571,7 +589,7 @@ $(document).ready(function (showFirst) {
         var scriptSlick = document.createElement('script');
         scriptSlick.src = 'js/slick/slick.min.js';
         document.body.appendChild(scriptSlick);
-        
+
         var linkCssFont1 = document.createElement('link');
         linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
         linkCssFont1.media = "all";
@@ -608,7 +626,12 @@ $('.close-window').click(function () {
 
 
 
-
+$('#startSearch').click(function () {
+    $('.load').addClass('ativo');
+    var inputValueSearch = $('#searchKey').val();
+    inputValueSearch = inputValueSearch.split(' ').join('');
+    getBaseInfo.getSearchPoke(inputValueSearch);
+});
 
 
 
