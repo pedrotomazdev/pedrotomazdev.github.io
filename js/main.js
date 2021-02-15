@@ -296,13 +296,14 @@ var pokeBase = {
     },
 
     createWindow: (pokeInformation) => {
-        jQuery('#windowPoke').addClass('ativo');
-        jQuery('#main').addClass('no-scroll');
-        jQuery('#infoPoke').addClass('ativo');
-        jQuery('#infoPoke').html('<div class="load-css"><div class="icon"></div></div>');
+        $('#windowPoke').addClass('ativo');
+        $('#main').addClass('no-scroll');
+        $('.body-pokemon').css('display', 'none');
+        $('#infoPoke').addClass('ativo');
+        $('.load').addClass('ativo');
 
         var templatePokemon =
-            "<div class='body-pokemon'>"
+            "<div class='body-pokemon' style='display: none;'>"
             + "<div class='container'>"
             + "<div class='content-pokemon {pokeType}'>"
             + "<div class='body-content {pokeType}'>"
@@ -453,7 +454,7 @@ var pokeBase = {
                     }
                 }
             }
-            
+
             var ctx = document.getElementById('myChart').getContext('2d');
             var pokeChart = new Chart(ctx, {
                 type: 'radar',
@@ -526,6 +527,10 @@ var pokeBase = {
             var url = pokeInformation.species.url;
             var prioridade = 'primal';
             pokeBase.getSpecies(url, prioridade, pokeInformation);
+
+            $('.load').removeClass('ativo');
+            $('.body-pokemon').css('display', 'block');
+
 
         }, 500);
 
