@@ -619,6 +619,8 @@ $(document).ready(function (showFirst) {
     }, 2000);
 });
 
+
+// fecha a janela de destaque do pokemon
 $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
     $('#main').removeClass('no-scroll')
@@ -626,7 +628,7 @@ $('.close-window').click(function () {
 
 
 
-
+//Evento de click que aciona a busca do pokemon pelo input no header fixo
 $('#startSearch').click(function () {
     $('.load').addClass('ativo');
     var inputValueSearch = $('#searchKey').val();
@@ -636,4 +638,7 @@ $('#startSearch').click(function () {
 
 
 
-
+// interação com o rodape animado
+setTimeout(() => {
+    $('footer').addClass('ativo');
+},3000);

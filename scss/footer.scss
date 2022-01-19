@@ -1,6 +1,6 @@
 footer {
     position        : fixed;
-    bottom          : 0;
+    bottom          : -300px;
     width           : 100%;
     z-index         : 10;
     display         : flex;
@@ -8,6 +8,24 @@ footer {
     justify-content : space-between;
     background-color: #f2f2f2;
     height          : 45px;
+    transition      : bottom 0.5s;
+
+    &.ativo {
+        bottom: 0;
+
+        div.profile-github {
+            bottom: 0;
+
+        }
+
+        div.view-repository-social {
+            div.icons-links {
+                div.item {
+                    bottom: 0;
+                }
+            }
+        }
+    }
 
     @media(max-width: 990px) {
         padding-bottom: 60px;
@@ -15,7 +33,9 @@ footer {
     }
 
     div.profile-github {
-        position: relative;
+        position  : relative;
+        bottom    : -200px;
+        transition: bottom 1s;
 
         span.baloom {
             position        : absolute;
@@ -87,9 +107,19 @@ footer {
         div.icons-links {
             display: flex;
 
+
+
             div.item {
                 padding : 0 15px;
                 position: relative;
+                bottom  : -100px;
+
+
+                @for $i from 1 through 5 {
+                    &:nth-child(3n + #{$i}) {
+                        transition: bottom 1.#{$i}s;
+                    }
+                }
 
                 @media(max-width: 990px) {
                     padding: 0 10px;
