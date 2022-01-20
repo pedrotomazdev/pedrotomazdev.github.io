@@ -1,4 +1,71 @@
+
+// inicia a pokedex com os primeiros 20 pokemons
+$(document).ready(function (showFirst) {
+    $('.load').addClass('ativo');
+
+
+    setTimeout(function () {
+        $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+            .done(function (resultadoPrimario) {
+                offset += 20;
+                getBaseInfo.tratamentoPrimal(resultadoPrimario);
+            });
+
+        $('.load').removeClass('ativo');
+        $('#preload').addClass('no-show')
+        $('#main').removeClass('no-scroll');
+
+
+        var scriptAddThis = document.createElement('script');
+        scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
+        document.body.appendChild(scriptAddThis);
+
+        var scriptChart = document.createElement('script');
+        scriptChart.src = 'js/chartjs/Chart.min.js';
+        document.body.appendChild(scriptChart);
+
+        var scriptChartBundle = document.createElement('script');
+        scriptChartBundle.src = 'js/chartjs/Chart.bundle.min.js';
+        document.body.appendChild(scriptChartBundle);
+
+        var scriptSlick = document.createElement('script');
+        scriptSlick.src = 'js/slick/slick.min.js';
+        document.body.appendChild(scriptSlick);
+
+        var linkCssFont1 = document.createElement('link');
+        linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
+        linkCssFont1.media = "all";
+        linkCssFont1.rel = "stylesheet";
+        linkCssFont1.id = "font-awesome-5-kit-css1"
+        document.head.appendChild(linkCssFont1);
+
+        var linkCssFont2 = document.createElement('link');
+        linkCssFont2.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css';
+        linkCssFont2.media = "all";
+        linkCssFont2.rel = "stylesheet";
+        linkCssFont2.id = "font-awesome-5-kit-css2"
+        document.head.appendChild(linkCssFont2);
+
+        var linkCssFont3 = document.createElement('link');
+        linkCssFont3.href = 'https://kit-free.fontawesome.com/releases/latest/css/free.min.css';
+        linkCssFont3.media = "all";
+        linkCssFont3.rel = "stylesheet";
+        linkCssFont3.id = "font-awesome-5-kit-css3"
+        document.head.appendChild(linkCssFont3);
+
+        var linkCssChart = document.createElement('link');
+        linkCssChart.href = 'css/Chart.min.css';
+        linkCssChart.rel = "stylesheet";
+        document.head.appendChild(linkCssChart);
+
+        // interação com o rodape animado
+        $('footer').addClass('ativo');
+    }, 3000);
+});
+
+
 var valores = [];
+
 
 
 // funções de inicialização da Pokedéx
@@ -67,7 +134,7 @@ var getBaseInfo = {
                         <img src="{pokeIcon}" alt="{pokeName}">\
                     </div>\
                 <div class="poke-img {pokeType}">\
-                    <img src={pokeSprite} class="primaria" alt="{pokeName}">\
+                    <img width="200" height="200" src={pokeSprite} class="primaria" alt="{pokeName}">\
                 </div>\
                 <div class="body-card">\
                     <div class="poke-id">\
@@ -558,68 +625,6 @@ $('#main').on('scroll', function (startS) {
     }
 });
 
-// inicia a pokedex com os primeiros 20 pokemons
-$(document).ready(function (showFirst) {
-    $('.load').addClass('ativo');
-
-
-    setTimeout(function () {
-        $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-            .done(function (resultadoPrimario) {
-                offset += 20;
-                getBaseInfo.tratamentoPrimal(resultadoPrimario);
-            });
-
-        $('.load').removeClass('ativo');
-        $('#preload').addClass('no-show')
-        $('#main').removeClass('no-scroll');
-
-
-        var scriptAddThis = document.createElement('script');
-        scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
-        document.body.appendChild(scriptAddThis);
-
-        var scriptChart = document.createElement('script');
-        scriptChart.src = 'js/chartjs/Chart.min.js';
-        document.body.appendChild(scriptChart);
-
-        var scriptChartBundle = document.createElement('script');
-        scriptChartBundle.src = 'js/chartjs/Chart.bundle.min.js';
-        document.body.appendChild(scriptChartBundle);
-
-        var scriptSlick = document.createElement('script');
-        scriptSlick.src = 'js/slick/slick.min.js';
-        document.body.appendChild(scriptSlick);
-
-        var linkCssFont1 = document.createElement('link');
-        linkCssFont1.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css';
-        linkCssFont1.media = "all";
-        linkCssFont1.rel = "stylesheet";
-        linkCssFont1.id = "font-awesome-5-kit-css1"
-        document.head.appendChild(linkCssFont1);
-
-        var linkCssFont2 = document.createElement('link');
-        linkCssFont2.href = 'https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css';
-        linkCssFont2.media = "all";
-        linkCssFont2.rel = "stylesheet";
-        linkCssFont2.id = "font-awesome-5-kit-css2"
-        document.head.appendChild(linkCssFont2);
-
-        var linkCssFont3 = document.createElement('link');
-        linkCssFont3.href = 'https://kit-free.fontawesome.com/releases/latest/css/free.min.css';
-        linkCssFont3.media = "all";
-        linkCssFont3.rel = "stylesheet";
-        linkCssFont3.id = "font-awesome-5-kit-css3"
-        document.head.appendChild(linkCssFont3);
-
-        var linkCssChart = document.createElement('link');
-        linkCssChart.href = 'css/Chart.min.css';
-        linkCssChart.rel = "stylesheet";
-        document.head.appendChild(linkCssChart);
-    }, 2000);
-});
-
-
 // fecha a janela de destaque do pokemon
 $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
@@ -638,7 +643,3 @@ $('#startSearch').click(function () {
 
 
 
-// interação com o rodape animado
-setTimeout(() => {
-    $('footer').addClass('ativo');
-},3000);
