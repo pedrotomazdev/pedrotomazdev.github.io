@@ -1,7 +1,6 @@
 # Nenzadex
 
 <div align="center">
-
     <img src="https://github.com/pedrotomazdev/pedrotomazdev.github.io/blob/main/img/site_demonster.gif?raw=true" alt="Nenzadex - Pokedex fan made">
 </div>
 
@@ -13,13 +12,9 @@ Esse projeto foi feito para testar meus conhecimentos e também expandi-los, cri
 
 ### Pontuação Pagespeed Google
 
-<div align="center">
-    <div align="center">
+<div align="center" style="display: flex;">
     <img height="210em"
-        src="https://github-readme-stats.vercel.app/api?username=pedrotomazdev&show_icons=true&theme=gotham&include_all_commits=true&count_private=true" />
-    </div>
-    <div align="center">
-        <img height="210em"
-            src="https://github-readme-stats.vercel.app/api/top-langs/?username=pedrotomazdev&theme=gotham" />
-    </div>
+        src="https://github.com/pedrotomazdev/pedrotomazdev.github.io/blob/main/img/pagespeed-desktop.png?raw=true" />
+    <img height="210em"
+        src="https://github.com/pedrotomazdev/pedrotomazdev.github.io/blob/main/img/pagespeed-mobile.png?raw=true" />
 </div>
