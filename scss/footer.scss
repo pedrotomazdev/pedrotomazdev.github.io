@@ -117,7 +117,7 @@ footer {
 
                 @for $i from 1 through 5 {
                     &:nth-child(3n + #{$i}) {
-                        transition: bottom 1.#{$i}s;
+                        transition: bottom 0.7s + ($i * 0.1);
                     }
                 }
 

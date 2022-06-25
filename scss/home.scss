@@ -155,7 +155,8 @@ div#all_poke {
         }
 
         div.pokemons-card {
-            animation: change-background 4s ease infinite;
+            min-height: 300px;
+            animation : change-background 4s ease infinite;
         }
     }
 
@@ -170,6 +171,7 @@ div#all_poke {
         margin-bottom   : 50px;
         position        : relative;
         cursor          : pointer;
+        border-radius   : 10px;
 
         &:hover {
 
@@ -204,7 +206,7 @@ div#all_poke {
                 }
 
                 &:after {
-                    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif);
+                    background-image: url(../img/bg-card.webp);
                     opacity         : .1;
                 }
 
@@ -216,7 +218,7 @@ div#all_poke {
 
                 img {
                     transform: scale(1.2);
-                    filter   : drop-shadow(1px 1px 2px #000);
+                    filter   : drop-shadow(1px 1px 12px #000);
                 }
             }
         }
@@ -349,10 +351,13 @@ div#all_poke {
         }
 
         div.poke-img {
-            display        : flex;
-            justify-content: center;
-            align-items    : center;
-            position       : relative;
+            display                : flex;
+            justify-content        : center;
+            align-items            : center;
+            position               : relative;
+            width                  : 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius : 10px;
 
             img {
                 max-width : 100%;
@@ -377,43 +382,50 @@ div#all_poke {
             }
 
             &:after {
-                content         : '';
-                z-index         : 1;
-                position        : absolute;
-                top             : 0;
-                left            : 0;
-                width           : 100%;
-                height          : 100%;
-                background-image: url(../img/bg-card.webp);
-                opacity         : 0.0;
+                content                : '';
+                z-index                : 1;
+                position               : absolute;
+                top                    : 0;
+                left                   : 0;
+                width                  : 100%;
+                height                 : 100%;
+                background-image       : url(../img/bg-card.webp);
+                opacity                : 0.0;
+                border-top-right-radius: 10px;
+                border-top-left-radius : 10px;
             }
 
             @each $type,
             $color in $typeColors {
                 &.#{$type} {
-                    background-size: 300% 100%;
+                    background-size: cover;
                 }
             }
         }
 
         div.body-card {
-            display         : flex;
-            flex-wrap       : wrap;
-            align-items     : center;
-            width           : 100%;
-            justify-content : space-between;
-            padding         : 15px;
-            padding-top     : 5px;
-            background-color: #fff;
+            display                   : flex;
+            flex-wrap                 : wrap;
+            align-items               : center;
+            width                     : 100%;
+            justify-content           : center;
+            padding                   : 15px;
+            background-color          : #fff;
+            border-bottom-left-radius : 9px;
+            border-bottom-right-radius: 9px;
 
             div.poke-id {
-                width: 50%;
+                width           : auto;
+                background-color: rgba(0, 0, 0, 0.6);
+                padding         : 5px 10px;
+                border-radius   : 10px;
 
                 h3 {
-                    text-align : left;
+                    text-align : center;
                     color      : #fff;
                     font-weight: bold;
-                    font-size  : 15px;
+                    font-size  : 18px;
+                    margin     : 0;
                     text-shadow: 1px 1px 3px #000;
                 }
             }
@@ -425,7 +437,7 @@ div#all_poke {
                 margin-top: 10px;
 
                 h2 {
-                    text-align    : left;
+                    text-align    : center;
                     text-transform: capitalize;
                     font-weight   : bold;
                     color         : #000;
@@ -441,10 +453,9 @@ div#all_poke {
 }
 
 div#infoPoke {
-    background-color: #000;
     height          : 100vh;
     overflow        : auto;
-    background-image: url(../img/bg-poke.webp);
+    background-image: url(../img/bg-poke.webp), linear-gradient(180deg, rgb(11, 38, 49) 0%, rgb(24, 68, 93) 25%, rgb(31, 119, 153) 50%, rgb(4, 196, 217) 75%, rgb(121, 230, 242) 100%);
     display         : flex;
     justify-content : center;
     align-items     : center;
@@ -653,8 +664,8 @@ div#infoPoke {
                     }
 
                     div.content {
-                        width : 300px;
-                        height: 300px;
+                        width : 400px;
+                        height: 400px;
 
                         @media(max-width: 770px) {
                             width : 250px;

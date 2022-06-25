@@ -1,5 +1,5 @@
 body {
-    background-color: #2a2a2a;
+    background-image: url(../img/bg-poke.webp), linear-gradient(180deg, rgb(11, 38, 49) 0%, rgb(24, 68, 93) 25%, rgb(31, 119, 153) 50%, rgb(4, 196, 217) 75%, rgb(121, 230, 242) 100%);
     overflow        : hidden;
     padding-top     : 125px;
 
@@ -27,6 +27,23 @@ section#main {
 
         @media(max-width: 990px) {
             width: 3px;
+        }
+    }
+
+    div#failedToLoad {
+        z-index         : 100;
+        position        : fixed;
+        padding         : 10px;
+        background-color: red;
+        border-radius   : 10px;
+        left            : -300px;
+        transform       : translateY(20px);
+        color           : #fff;
+        font-weight     : bold;
+        box-shadow      : 1px 1px 7px #000;
+
+        &.ativo {
+            left: 10px;
         }
     }
 

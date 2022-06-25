@@ -16,9 +16,9 @@ $(document).ready(function (showFirst) {
         $('#main').removeClass('no-scroll');
 
 
-        var scriptAddThis = document.createElement('script');
-        scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
-        document.body.appendChild(scriptAddThis);
+        // var scriptAddThis = document.createElement('script');
+        // scriptAddThis.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6028189be0fe16db';
+        // document.body.appendChild(scriptAddThis);
 
         var scriptChart = document.createElement('script');
         scriptChart.src = 'js/chartjs/Chart.min.js';
@@ -92,6 +92,15 @@ var getBaseInfo = {
             },
             error: function (XMLHttpRequest, textStatus, errorThrown, result) {
                 console.log('Falha em: catchPoke [', XMLHttpRequest, textStatus, errorThrown, result, ']');
+                $('.load').removeClass('ativo');
+                $('#failedToLoad').text('Sorry, no pokemon found in our database :(');
+                $('#failedToLoad').addClass('ativo');
+
+                setTimeout(function () {
+                    $('#failedToLoad').text('');
+                    $('#failedToLoad').removeClass('ativo'); 
+                }, 3000);
+
             }
         });
     },
@@ -524,10 +533,11 @@ var pokeBase = {
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var pokeChart = new Chart(ctx, {
-                type: 'radar',
+                type: 'bar',
                 data: {
                     labels: textStat,
                     datasets: [{
+                        axis: 'y',
                         label: 'STATUS',
                         lineTension: 0.1,
                         backgroundColor: getByKey(),
@@ -541,24 +551,7 @@ var pokeBase = {
                     }]
                 },
                 options: {
-                    scale: {
-                        angleLines: {
-                            display: true,
-                            lineWidth: 0.5,
-                            color: 'rgba(128, 128, 128, 0.2)'
-                        },
-                        pointLabels: {
-                            fontSize: 11,
-                            fontStyle: '500',
-                            fontFamily: "koho-bold",
-                            fontColor: '#000',
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                            maxTicksLimit: 3,
-                            display: false
-                        }
-                    },
+                    indexAxis: 'y',
                     legend: {
                         display: false,
                         labels: {
@@ -611,7 +604,10 @@ var pokeBase = {
 var offset = 0;
 $('#main').on('scroll', function (startS) {
     let div = $(this).get(0);
-    if (div.scrollTop + div.clientHeight >= div.scrollHeight) {
+    console.log(div);
+    console.log(div.scrollTop + div.clientHeight)
+    console.log(div.scrollHeight)
+    if (div.scrollTop + div.clientHeight >= (div.scrollHeight - 1)) {
         $('.load').addClass('ativo');
         $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset)
             .done(function (resultadoPrimario) {
@@ -641,5 +637,13 @@ $('#startSearch').click(function () {
     getBaseInfo.getSearchPoke(inputValueSearch);
 });
 
+$('#searchKey').keypress(function (e) {
+    if (e.key === "Enter") {
+        $('.load').addClass('ativo');
+        var inputValueSearch = $('#searchKey').val();
+        inputValueSearch = inputValueSearch.split(' ').join('');
+        getBaseInfo.getSearchPoke(inputValueSearch);
+    }
+});
 
 
