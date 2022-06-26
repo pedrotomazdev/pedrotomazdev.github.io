@@ -48,12 +48,11 @@ section#main {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #19d3da;
         background-image: -webkit-linear-gradient(90deg,
                 transparent,
                 rgba(0, 0, 0, 0.4) 50%,
                 transparent,
-                transparent)
+                transparent), linear-gradient(180deg, #450003 0%, #5C0002 25%, #94090D 50%, #D40D12 75%, #FF1D23 100%);
     }
 }
 

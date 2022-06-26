@@ -1,12 +1,12 @@
 header.nenza-header {
-    position        : fixed;
-    top             : 0;
-    width           : 100%;
-    z-index         : 5;
-    border-bottom   : 1px solid #19d3da;
-    background-color: #2a2a2a;
-    box-shadow      : 1px 1px 9px 4px #000;
-    transition      : top 0.5s ease-in-out;
+    position     : fixed;
+    top          : 0;
+    width        : 100%;
+    z-index      : 5;
+    border-bottom: 1px solid #FF1D23;
+    background   : linear-gradient(-90deg, rgb(69 0 3 / 70%) 0%, rgb(92 0 2 / 70%) 25%, rgb(148 9 13 / 70%) 50%, rgb(212 13 18 / 70%) 75%, rgb(255 29 35 / 70%) 100%);
+    box-shadow   : 1px 1px 9px 4px #000;
+    transition   : top 0.5s ease-in-out;
 
     &.move-down-nenza {
         top: -300px;
@@ -19,10 +19,6 @@ header.nenza-header {
         div.campo-busca {
             padding: 10px 0;
 
-            @media(max-width: 990px) {
-                text-align   : center;
-                border-bottom: 1px solid #19d3da;
-            }
 
             p {
                 color        : #fff;
@@ -50,10 +46,12 @@ header.nenza-header {
                     border          : none;
                     color           : #fff;
                     border-radius   : 5px;
-                    background-color: #19d3da;
+                    cursor          : pointer;
+                    background-color: #FF1D23;
                     width           : 50px;
                     height          : 40px;
                     margin-left     : 10px;
+                    appearance      : none;
                 }
             }
 

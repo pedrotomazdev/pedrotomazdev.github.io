@@ -362,6 +362,8 @@ div#all_poke {
             img {
                 max-width : 100%;
                 max-height: 100%;
+                width     : auto;
+                height    : auto;
                 position  : relative;
                 z-index   : 2;
                 transition: transform .3s cubic-bezier(0.2, -1.01, 0.46, 1.37);
@@ -491,7 +493,7 @@ div#all_poke {
                 }
 
                 img {
-                    filter   : drop-shadow(1px 1px 12px #000);
+                    filter: drop-shadow(1px 1px 12px #000);
                 }
             }
         }

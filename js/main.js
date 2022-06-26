@@ -604,7 +604,7 @@ var lastScrollTop = 0;
 $('#main').on('scroll', function (startS) {
     let div = $(this).get(0);
     if (div.scrollTop + div.clientHeight >= (div.scrollHeight - 1)) {
-        
+
         $('.load').addClass('ativo');
         $('#main').addClass('no-scroll');
 
@@ -651,17 +651,40 @@ $('.close-window').click(function () {
 //Evento de click que aciona a busca do pokemon pelo input no header fixo
 $('#startSearch').click(function () {
     $('.load').addClass('ativo');
-    var inputValueSearch = $('#searchKey').val();
-    inputValueSearch = inputValueSearch.split(' ').join('');
-    getBaseInfo.getSearchPoke(inputValueSearch);
+    var inputValueSearch = $('#searchKey').val().toLowerCase();
+    if (inputValueSearch != '') {
+        inputValueSearch = inputValueSearch.split(' ').join('');
+        getBaseInfo.getSearchPoke(inputValueSearch);
+    } else {
+        $('.load').removeClass('ativo');
+        $('#failedToLoad').text('Sorry, no pokemon found in our database :(');
+        $('#failedToLoad').addClass('ativo');
+
+        setTimeout(function () {
+            $('#failedToLoad').text('');
+            $('#failedToLoad').removeClass('ativo');
+        }, 3000);
+    }
+
 });
 
 $('#searchKey').keypress(function (e) {
     if (e.key === "Enter") {
         $('.load').addClass('ativo');
-        var inputValueSearch = $('#searchKey').val();
-        inputValueSearch = inputValueSearch.split(' ').join('');
-        getBaseInfo.getSearchPoke(inputValueSearch);
+        var inputValueSearch = $('#searchKey').val().toLowerCase();
+        if (inputValueSearch != '') {
+            inputValueSearch = inputValueSearch.split(' ').join('');
+            getBaseInfo.getSearchPoke(inputValueSearch);
+        } else {
+            $('.load').removeClass('ativo');
+            $('#failedToLoad').text('Sorry, no pokemon found in our database :(');
+            $('#failedToLoad').addClass('ativo');
+
+            setTimeout(function () {
+                $('#failedToLoad').text('');
+                $('#failedToLoad').removeClass('ativo');
+            }, 3000);
+        }
     }
 });
 
