@@ -1,11 +1,6 @@
 body {
-    background-image: url(../img/bg-poke.webp), linear-gradient(180deg, rgb(11, 38, 49) 0%, rgb(24, 68, 93) 25%, rgb(31, 119, 153) 50%, rgb(4, 196, 217) 75%, rgb(121, 230, 242) 100%);
+    background-image: url(../img/bg-poke.webp), linear-gradient(180deg, #450003 0%, #5C0002 25%, #94090D 50%, #D40D12 75%, #FF1D23 100%);
     overflow        : hidden;
-    padding-top     : 125px;
-
-    @media(max-width: 990px) {
-        padding-top: 180px;
-    }
 }
 
 section#main.no-scroll {
@@ -13,8 +8,13 @@ section#main.no-scroll {
 }
 
 section#main {
-    overflow: auto;
-    height  : 100vh;
+    overflow   : auto;
+    height     : 100vh;
+    padding-top: 150px;
+
+    @media(max-width: 990px) {
+        padding-top: 120px;
+    }
 
     &::-webkit-scrollbar-track {
         box-shadow      : inset 0 0 6px rgba(0, 0, 0, 0.9);

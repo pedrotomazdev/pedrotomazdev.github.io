@@ -28,7 +28,7 @@ footer {
     }
 
     @media(max-width: 990px) {
-        padding-bottom: 60px;
+        padding-bottom: 15px;
         padding-top   : 20px;
     }
 
@@ -83,7 +83,10 @@ footer {
             left         : 15px;
 
             @media(max-width: 990px) {
-                left: 5px;
+                left  : 5px;
+                width : 70px;
+                height: 70px;
+                top   : -55px;
             }
 
 

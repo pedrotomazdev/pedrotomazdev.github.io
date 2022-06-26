@@ -63,10 +63,7 @@ $(document).ready(function (showFirst) {
     }, 3000);
 });
 
-
 var valores = [];
-
-
 
 // funções de inicialização da Pokedéx
 var getBaseInfo = {
@@ -98,7 +95,7 @@ var getBaseInfo = {
 
                 setTimeout(function () {
                     $('#failedToLoad').text('');
-                    $('#failedToLoad').removeClass('ativo'); 
+                    $('#failedToLoad').removeClass('ativo');
                 }, 3000);
 
             }
@@ -600,15 +597,17 @@ var pokeBase = {
 // fim
 
 
-//carrega os pokemons na rolagem da tela
+//carrega os pokemons na rolagem da tela e esconde menu flutuante
 var offset = 0;
+var lastScrollTop = 0;
+
 $('#main').on('scroll', function (startS) {
     let div = $(this).get(0);
-    console.log(div);
-    console.log(div.scrollTop + div.clientHeight)
-    console.log(div.scrollHeight)
     if (div.scrollTop + div.clientHeight >= (div.scrollHeight - 1)) {
+        
         $('.load').addClass('ativo');
+        $('#main').addClass('no-scroll');
+
         $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset)
             .done(function (resultadoPrimario) {
                 offset += 20;
@@ -617,14 +616,34 @@ $('#main').on('scroll', function (startS) {
         startS.preventDefault();
         setTimeout(function () {
             $('.load').removeClass('ativo');
-        }, 1500);
+            $('#main').removeClass('no-scroll');
+
+        }, 1000);
     }
+
+    var st = $(this).scrollTop();
+
+    if (st > 255) {
+        if (st > lastScrollTop) {
+            $('.nenza-header').addClass('move-down-nenza');
+            $('.nenza-header').removeClass('move-up-nenza');
+
+        } else {
+            $('.nenza-header').removeClass('move-down-nenza');
+            $('.nenza-header').addClass('move-up-nenza');
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    } else {
+        $('.nenza-header').removeClass('move-down-nenza');
+        $('.nenza-header').removeClass('move-up-nenza');
+    }
+    lastScrollTop = st;
 });
 
 // fecha a janela de destaque do pokemon
 $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
-    $('#main').removeClass('no-scroll')
+    $('#main').removeClass('no-scroll');
 });
 
 
@@ -645,5 +664,4 @@ $('#searchKey').keypress(function (e) {
         getBaseInfo.getSearchPoke(inputValueSearch);
     }
 });
-
 

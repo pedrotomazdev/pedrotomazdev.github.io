@@ -1,4 +1,4 @@
-header {
+header.nenza-header {
     position        : fixed;
     top             : 0;
     width           : 100%;
@@ -6,6 +6,11 @@ header {
     border-bottom   : 1px solid #19d3da;
     background-color: #2a2a2a;
     box-shadow      : 1px 1px 9px 4px #000;
+    transition      : top 0.5s ease-in-out;
+
+    &.move-down-nenza {
+        top: -300px;
+    }
 
     div.content-header {
         display  : flex;
