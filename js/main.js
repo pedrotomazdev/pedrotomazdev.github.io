@@ -373,6 +373,7 @@ var pokeBase = {
         $('#main').addClass('no-scroll');
         $('.body-pokemon').css('display', 'none');
         $('#infoPoke').addClass('ativo');
+        $('#infoPoke').addClass(pokeInformation.types[0].type.name);
         $('.load').addClass('ativo');
 
         var templatePokemon =
@@ -643,6 +644,7 @@ $('#main').on('scroll', function (startS) {
 // fecha a janela de destaque do pokemon
 $('.close-window').click(function () {
     $('#windowPoke').removeClass('ativo');
+    $("#infoPoke").attr('class', '');
     $('#main').removeClass('no-scroll');
 });
 

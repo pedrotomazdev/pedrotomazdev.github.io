@@ -519,12 +519,21 @@ div#all_poke {
 }
 
 div#infoPoke {
-    height          : 100vh;
-    overflow        : auto;
-    background-image: url(../img/bg-poke.webp), linear-gradient(180deg, rgb(11, 38, 49) 0%, rgb(24, 68, 93) 25%, rgb(31, 119, 153) 50%, rgb(4, 196, 217) 75%, rgb(121, 230, 242) 100%);
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
+    height         : 100vh;
+    overflow       : auto;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+
+    @each $type,
+    $color in $typeColors {
+        &.#{$type} {
+            background         : url(../img/bg-poke.webp), $color;
+            background-position: 100% 0;
+            transition         : all .4s ease-in-out;
+        }
+    }
+
 
     div.body-pokemon {
         width: 80vw;
