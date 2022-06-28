@@ -158,6 +158,21 @@ div#all_poke {
             min-height: 300px;
             animation : change-background 4s ease infinite;
         }
+
+        div.poke-img {
+            background-image: none;
+            background-color: transparent;
+
+            &:before {
+                opacity  : 0.4;
+                animation: gradient 5s ease infinite;
+            }
+
+            &:after {
+                background-image: url(../img/bg-card.webp);
+                opacity         : 0.1;
+            }
+        }
     }
 
     div#preload.no-show {
@@ -173,6 +188,15 @@ div#all_poke {
         cursor          : pointer;
         border-radius   : 10px;
 
+        @each $type,
+        $color in $typeColor {
+            &.#{$type} {
+                div.body-card {
+                    background: $color;
+                }
+            }
+        }
+
         &:hover {
 
             @each $type,
@@ -182,17 +206,6 @@ div#all_poke {
                     filter    : drop-shadow(0px -2px 1px $color)
                 }
             }
-
-            @each $type,
-            $color in $typeColor {
-                &.#{$type} {
-                    div.body-card {
-                        background: $color;
-                    }
-                }
-            }
-
-
 
             div.poke-img {
 
@@ -217,7 +230,7 @@ div#all_poke {
                 }
 
                 img {
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                     filter   : drop-shadow(1px 1px 12px #000);
                 }
             }
@@ -358,6 +371,8 @@ div#all_poke {
             width                  : 100%;
             border-top-right-radius: 10px;
             border-top-left-radius : 10px;
+            background-color       : #f1f1f1;
+            background-image       : url(../img/bg-poke.webp);
 
             img {
                 max-width : 100%;

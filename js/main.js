@@ -7,8 +7,8 @@ $(document).ready(function (showFirst) {
     setTimeout(function () {
         $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
             .done(function (resultadoPrimario) {
-                offset += 20;
                 getBaseInfo.tratamentoPrimal(resultadoPrimario);
+                offset += 20;
             });
 
         $('.load').removeClass('ativo');
@@ -610,8 +610,8 @@ $('#main').on('scroll', function (startS) {
 
         $.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset)
             .done(function (resultadoPrimario) {
-                offset += 20;
                 getBaseInfo.tratamentoPrimal(resultadoPrimario);
+                offset += 20;
             })
         startS.preventDefault();
         setTimeout(function () {
