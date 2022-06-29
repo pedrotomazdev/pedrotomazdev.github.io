@@ -369,8 +369,9 @@ div#all_poke {
             align-items            : center;
             position               : relative;
             width                  : 100%;
-            border-top-right-radius: 10px;
-            border-top-left-radius : 10px;
+            overflow               : hidden;
+            border-top-right-radius: 5px;
+            border-top-left-radius : 5px;
             background-color       : #f1f1f1;
             background-image       : url(../img/bg-poke.webp);
 
@@ -428,8 +429,8 @@ div#all_poke {
             justify-content           : center;
             padding                   : 15px;
             background-color          : #fff;
-            border-bottom-left-radius : 9px;
-            border-bottom-right-radius: 9px;
+            border-bottom-left-radius : 5px;
+            border-bottom-right-radius: 5px;
 
             div.poke-id {
                 width           : auto;
@@ -525,6 +526,11 @@ div#infoPoke {
     justify-content: center;
     align-items    : center;
 
+    @media(max-width: 990px) {
+        align-items: inherit;
+        padding    : 10px 5px;
+    }
+
     @each $type,
     $color in $typeColors {
         &.#{$type} {
@@ -550,14 +556,14 @@ div#infoPoke {
         div.content-pokemon {
             background-color   : #f1f1f1;
             border-radius      : 10px;
-            height             : 90vh;
+            height             : calc(90vh - 60px);
             display            : flex;
             justify-content    : center;
             align-items        : center;
             // background-image: url(../img/bg-poke.webp);
 
             @media(max-width: 990px) {
-                height       : 95vh;
+                height       : calc(95vh - 35px);
                 border-radius: 5px;
             }
 
@@ -583,11 +589,13 @@ div#infoPoke {
                         &::-webkit-scrollbar-track {
                             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
                             background-color  : #CCCCCC;
+                            border-radius     : 5px;
                         }
 
                         &::-webkit-scrollbar {
                             width           : 7px;
                             background-color: #F5F5F5;
+                            border-radius   : 5px;
 
                             @media(max-width: 990px) {
                                 width: 3px;
@@ -596,6 +604,7 @@ div#infoPoke {
 
                         &::-webkit-scrollbar-thumb {
                             background-color: $color;
+                            border-radius   : 5px;
                             background-image: -webkit-linear-gradient(90deg,
                                     transparent,
                                     rgba(0, 0, 0, 0.4) 50%,
@@ -616,6 +625,11 @@ div#infoPoke {
                         font-size     : 40px;
                         font-weight   : bold;
                         text-transform: capitalize;
+                    }
+
+                    div#smallDescription {
+                        width     : 100%;
+                        text-align: center;
                     }
 
                     div.name {
@@ -644,10 +658,6 @@ div#infoPoke {
                         align-items     : center;
                         width           : 100%;
 
-                        @media(max-width: 770px) {
-                            margin-bottom: 30px;
-                        }
-
                         img {
                             width     : 300px;
                             max-width : 100%;
@@ -662,15 +672,70 @@ div#infoPoke {
                     }
 
                     div.pokesprites {
-                        display: flex;
-                        width  : 100%;
+                        display        : flex;
+                        max-height     : 135px;
+                        margin-top     : 20px;
+                        width          : 100%;
+                        justify-content: space-between;
 
-                        div.item {
-                            padding        : 0 6px;
-                            width          : 25%;
+                        .slick-button {
+                            border         : none;
+                            width          : 35px;
+                            height         : 35px;
+                            border-radius  : 50%;
+                            position       : absolute;
+                            top            : 50%;
+                            transform      : translateY(-50%);
+                            z-index        : 1;
                             display        : flex !important;
                             justify-content: center;
                             align-items    : center;
+
+                            &.slick-prev {
+                                left: -10px;
+                            }
+
+                            &.slick-next {
+                                right: -10px;
+                            }
+                        }
+
+                        @each $type,
+                        $color in $mainColorTypes {
+                            &.#{$type} {
+                                .slick-button {
+                                    background-color: $color;
+                                }
+                            }
+                        }
+
+                        @media(max-width: 990px) {
+                            margin-bottom: 20px;
+                        }
+
+                        div.item {
+                            width          : 95px;
+                            height         : 95px;
+                            display        : flex !important;
+                            justify-content: center;
+                            align-items    : center;
+                            max-width      : 95px;
+                            background     : url(../img/bg-poke.webp), rgb(204, 204, 204, 0.7);
+                            overflow       : hidden;
+                            background-size: cover;
+                            border-radius  : 10px;
+                            cursor         : pointer;
+                            margin         : 5px;
+
+                            @media(max-width: 990px) {
+                                height: 75px;
+                            }
+
+                            &.ativo {
+                                background     : url(../img/bg-poke.webp), rgba(73, 80, 87, 0.7);
+                                background-size: cover;
+
+                            }
 
                             img {
                                 max-width: 100%;
@@ -686,7 +751,27 @@ div#infoPoke {
                     margin-bottom: 15px;
                     width        : 100%;
                     font-weight  : 600;
+                    padding      : 5px;
+                    border       : 2px solid #ccc;
+                    border-radius: 10px;
 
+                }
+
+                div.height-weight {
+                    display        : flex;
+                    justify-content: space-between;
+
+                    div.item {
+                        width     : calc(50% - 5px);
+                        text-align: center;
+
+                        div.content-item {
+                            padding      : 5px;
+                            border       : 2px solid #ccc;
+                            border-radius: 10px;
+                            font-weight  : 600;
+                        }
+                    }
                 }
 
                 div.types {
@@ -728,23 +813,56 @@ div#infoPoke {
                 }
 
                 div.poke-chart {
-                    margin-top     : 20px;
-                    width          : 100%;
-                    display        : flex;
-                    justify-content: center;
-                    align-items    : center;
+                    margin-top: 20px;
+                    width     : 100%;
 
                     @media(max-width: 770px) {
                         margin-bottom: 20px;
                     }
 
+                    @each $type,
+                    $color in $mainColorTypes {
+                        &.#{$type} {
+                            div.content-pontos {
+                                background: $color url(../img/bg-poke.webp);
+                            }
+                        }
+                    }
+                    div.title-chart {
+                        width: 100%;
+                        font-weight: bold;
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                        color: #000;
+                    }
                     div.content {
-                        width : 400px;
-                        height: 400px;
+                        div.item-pontos {
+                            margin-bottom   : 10px;
+                            display         : flex;
+                            background: #495057 url(../img/bg-poke.webp);
+                            border-radius   : 10px;
 
-                        @media(max-width: 770px) {
-                            width : 250px;
-                            height: 250px;
+                            div.title-pontos {
+                                padding                  : 5px 10px;
+                                text-align               : center;
+                                font-weight              : bold;
+                                background-color         : #2a2a2a;
+                                color                    : #fff;
+                                border-top-left-radius   : 10px;
+                                min-width                : 100px;
+                                white-space              : nowrap;
+                                font-size                : 12px;
+                                border-bottom-left-radius: 10px;
+                            }
+
+                            div.content-pontos {
+                                text-align                : right;
+                                padding-right             : 10px;
+                                color                     : #fff;
+                                border-top-right-radius   : 10px;
+                                border-bottom-right-radius: 10px;
+                                font-weight               : bold;
+                            }
                         }
                     }
                 }
