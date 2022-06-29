@@ -484,7 +484,7 @@ var pokeBase = {
             + "</div>"
             + "</div>"
             + "<div class='item-pontos'>"
-            + "<div class='title-pontos'>Special Atac</div>"
+            + "<div class='title-pontos'>Special Atack</div>"
             + "<div class='content-pontos' style='width:calc({pokeSPw}% - 100px);'>"
             + "{pokeSP}"
 
